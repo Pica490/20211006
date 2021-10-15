@@ -29,10 +29,9 @@ class UserIterate:
                 list_of_candidate
 
             else:
-                if record['city']['title'] == 'Москва' and record['sex'] == dict_for_search['ssex']:
-                        # and record['bdate'][-3:] == dict_for_search['bdate'][-3:]:
-                    # if record['relation'] in a_var_relation:
-                    list_of_candidate.append(record)
+                if record['city']['title'] == dict_for_search['city'] and record['sex'] == dict_for_search['ssex'] and record['bdate'][-3:] == dict_for_search['bdate'][-3:]:
+                    if record['relation'] in a_var_relation:
+                        list_of_candidate.append(record)
 
             return list_of_candidate
         return list_of_candidate
