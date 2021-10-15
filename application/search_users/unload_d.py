@@ -1,9 +1,5 @@
 import requests
 
-list_of_candidate = []
-
-res = []
-
 class UserIterate:
     def __init__(self, token, dict_for_search, last_userID):
         self.token = token
@@ -12,7 +8,6 @@ class UserIterate:
 
 
     def _get_users(self, list_id, token):
-
 
         URL = 'https://api.vk.com/method/users.get'
         params = {
@@ -28,16 +23,18 @@ class UserIterate:
     def _user_processing(self, res, list_of_candidate, dict_for_search):
         for record in res:
             a_var_relation = [1,5,6,0]
-
+            print(record
+                  )
             if record.get('bdate') == None or record.get('city') == None or record.get('relation') == None or record.get('photo_id') == None:
                 list_of_candidate
 
             else:
-                if record['city']['title'] == dict_for_search['city'] and record['sex'] == dict_for_search['ssex'] and dict_for_search['city'] and record['bdate'][-3:] == dict_for_search['bdate'][-3:]:
-                    if record['relation'] in a_var_relation:
-                        list_of_candidate.append(record)
+                if record['city']['title'] == 'Москва' and record['sex'] == dict_for_search['ssex']:
+                        # and record['bdate'][-3:] == dict_for_search['bdate'][-3:]:
+                    # if record['relation'] in a_var_relation:
+                    list_of_candidate.append(record)
 
-            return (list_of_candidate)
+            return list_of_candidate
         return list_of_candidate
 
     def searching(self, token, dict_for_search, last_userID):
@@ -56,4 +53,4 @@ class UserIterate:
             list_of_candidate = self._user_processing(res,list_of_candidate,dict_for_search)
             list_id = ''
 
-        return(list_of_candidate)
+        return list_of_candidate

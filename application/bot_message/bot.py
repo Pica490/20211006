@@ -48,6 +48,7 @@ class User:
         else:
             self.dict_for_search = {'city': param['response'][0]['city']['title'],
                                    'bdate': param['response'][0]['bdate'], 'ssex':1}
+            print(self.dict_for_search)
         return self.dict_for_search
 
 
@@ -84,7 +85,7 @@ class User:
             return f"Привет,{self._USERNAME}, заполни в профиле город, дату рождения, пол!"
 
         else:
-            return "Не понимаю о чем вы..."
+            return f"Не понимаю о чем вы..."
 
 
 

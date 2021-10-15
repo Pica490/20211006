@@ -3,6 +3,7 @@ from application.search_users.db import new_data
 from application.search_users.db import get_last_userid
 from application.get_attachment.t_photo import PhotoID
 from application.get_attachment.s_photos import AtMessage
+from application.search_users.r_json import wr_to_file
 import logging
 
 
@@ -31,6 +32,9 @@ def get_attachment(token, token_vk, dict_for_search):
 
     # Записывает в БД кандидатов
     b = new_data(list_of_candidate)
+
+    # Записывает кандидатов в файл json, как резервную копию
+    wr_to_file(list_of_candidate)
 
     logging.basicConfig(filename='myLogs', filemode='a', format='%(asctime)s - %(message)s', level=logging.DEBUG)
     logging.debug(f'Функция формирования вложений запущена.')

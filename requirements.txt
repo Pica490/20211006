@@ -1,0 +1,6 @@
+vk-api
+psycopg2
+requests
+SQLAlchemy
+
+
